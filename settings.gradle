@@ -12,4 +12,4 @@ pluginManagement {
      }
 }
 
-rootProject.name = "kickerapp"
+rootProject.name = "kicker-app"
