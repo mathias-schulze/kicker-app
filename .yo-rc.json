@@ -37,6 +37,8 @@
     "enableTranslation": true,
     "nativeLanguage": "de",
     "languages": ["de", "en"],
-    "blueprints": []
+    "blueprints": [],
+    "herokuAppName": "msz-kicker",
+    "herokuDeployType": "git"
   }
 }
