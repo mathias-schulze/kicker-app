@@ -36,7 +36,10 @@
     "otherModules": [],
     "enableTranslation": true,
     "nativeLanguage": "de",
-    "languages": ["de", "en"],
+    "languages": [
+      "de",
+      "en"
+    ],
     "blueprints": [],
     "herokuAppName": "msz-kicker",
     "herokuDeployType": "git"

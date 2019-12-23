@@ -214,6 +214,8 @@ dependencies {
     compile "org.springframework.cloud:spring-cloud-localconfig-connector"
     compile "org.springframework.cloud:spring-cloud-heroku-connector"
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
+    
+     compile 'com.google.firebase:firebase-admin:6.12.0'
 }
 
 task cleanResources(type: Delete) {

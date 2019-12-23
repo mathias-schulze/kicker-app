@@ -1,11 +1,16 @@
 package de.msz.kickerapp.web.rest;
 
+import java.util.Collection;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.msz.kickerapp.domain.Player;
+import de.msz.kickerapp.service.FirestoreService;
 import de.msz.kickerapp.web.rest.dashboard.Game;
 import de.msz.kickerapp.web.rest.dashboard.GameList;
 
@@ -15,12 +20,12 @@ import de.msz.kickerapp.web.rest.dashboard.GameList;
 @RestController
 @RequestMapping("/api/dashboard")
 public class DashboardResource {
-
+	
     private final Logger log = LoggerFactory.getLogger(DashboardResource.class);
-
-    /**
-    * GET lastGames
-    */
+    
+    @Autowired
+    private FirestoreService db;
+    
     @GetMapping("/last-games")
     public GameList lastGames() {
     	
@@ -38,5 +43,9 @@ public class DashboardResource {
     	
         return games;
     }
-
+    
+    @GetMapping("/ranking")
+    public Collection<Player> getRanking() {
+    	return db.getPlayers().values();
+    }
 }
