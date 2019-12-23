@@ -1,9 +1,11 @@
 package de.msz.kickerapp.service;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,19 +48,21 @@ private Firestore db;
 	
 	private Firestore getFirestore() throws IOException {
 		
+		InputStream serviceAccount;
+		
 		File firestoreConfFile = new File("src\\\\main\\\\resources\\\\mszkicker-firestore-conf.json");
-		// local configuration file
-		if (firestoreConfFile.exists()) {
-			InputStream serviceAccount = new FileInputStream(firestoreConfFile);
-			GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
-			FirebaseOptions options = new FirebaseOptions.Builder()
-			    .setCredentials(credentials)
-			    .build();
-			FirebaseApp.initializeApp(options);
-		// environment variable FIREBASE_CONFIG for cloud deployment
-		} else {
-			FirebaseApp.initializeApp();
+		if (firestoreConfFile.exists()) {	// local configuration file
+			serviceAccount = new FileInputStream(firestoreConfFile);
+		} else {							// environment variable FIREBASE_CONFIG for cloud deployment
+			String serviceAccountJson = System.getenv("SERVICE_ACCOUNT_JSON");
+			serviceAccount = new ByteArrayInputStream(serviceAccountJson.getBytes(StandardCharsets.UTF_8));
 		}
+		
+		GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+		FirebaseOptions options = new FirebaseOptions.Builder()
+				.setCredentials(credentials)
+				.build();
+		FirebaseApp.initializeApp(options);
 		
 		return FirestoreClient.getFirestore();
 	}
