@@ -4,7 +4,7 @@
       "packageName": "de.msz.kickerapp",
       "nativeLanguage": "de"
     },
-    "jhipsterVersion": "6.4.1",
+    "jhipsterVersion": "6.6.0",
     "applicationType": "monolith",
     "baseName": "kickerapp",
     "packageName": "de.msz.kickerapp",
@@ -36,12 +36,10 @@
     "otherModules": [],
     "enableTranslation": true,
     "nativeLanguage": "de",
-    "languages": [
-      "de",
-      "en"
-    ],
+    "languages": ["de", "en"],
     "blueprints": [],
     "herokuAppName": "msz-kicker",
-    "herokuDeployType": "git"
+    "herokuDeployType": "git",
+    "creationTimestamp": 1577278977200
   }
 }
