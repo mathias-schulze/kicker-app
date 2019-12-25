@@ -1,8 +1,8 @@
 package de.msz.kickerapp;
 
 import de.msz.kickerapp.config.ApplicationProperties;
-import de.msz.kickerapp.config.DefaultProfileUtil;
 
+import io.github.jhipster.config.DefaultProfileUtil;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.apache.commons.lang3.StringUtils;
