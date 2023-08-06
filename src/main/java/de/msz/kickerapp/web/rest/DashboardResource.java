@@ -46,6 +46,6 @@ public class DashboardResource {
     
     @GetMapping("/ranking")
     public Collection<Player> getRanking() {
-    	return db.getPlayers().values();
+    	return null;//db.getPlayers().values();
     }
 }
